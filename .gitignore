@@ -5,8 +5,8 @@
 
 **/node_modules/**
 /backend/node_modules/
-**/package.json
-/backend/package.json
+#**/package.json
+#/backend/package.json
 
 **/dist/**
 **/.vscode
