@@ -1,6 +1,7 @@
 "# Group4 Attendance Assignment" 
 
-to start the server:  * cd to backennd directory
+to start the server:
+* cd to backennd directory
                       * npm install
                       * npm start
                         * localhost:9000
