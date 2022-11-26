@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 var path = require('path');
 const logger = require('morgan');
 const mongoose = require('mongoose')
+
 var MongoClient = require('mongodb').MongoClient;
 
 
@@ -32,6 +33,7 @@ app.use('/Attendence', AttendenceRouter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 
 MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
   if(err) throw err
