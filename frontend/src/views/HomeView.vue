@@ -1,29 +1,44 @@
 <template>
-    <div class="home">
-        <Attendance msg="Welcome to Your Vue.js App" />
-        <div class="img">
-            <img src="https://ucarecdn.com/68f429ed-29ee-4015-b99d-764e405cf1ae/-/resize/601x326/" width=200 high=100 >
-        </div>
-        <div class="list">
-            <div class="col-md-8">
-                <div class="users">
+    <div class="homepage-view">
+            <!-- <Attendance msg="Welcome to Your Vue.js App" /> -->
+            <header>
+                <!-- <h1>Login</h1> -->
+            </header>
 
-                    <input type="text" class="form-control" placeholder="please enter your username"
-                           v-model="name">
-                </div>
-                <div class="password">
-                    <input type="text" class="form-control" placeholder="please enter your password"
-                           v-model="name" />
-                </div>
+            <main>
+                <img src="../../assets/images/login_img.png" width=200 high=100 >
 
-                <div class="login">
-                    <button class="btn btn-outline-secondary" type="button"
-                            @click="searchName">
-                        login
-                    </button>
+                <div class="form">
+                    <form action="/action_page.php">
+                        <label for="username"></label>
+                        <input type="text" id="username" name="username" placeholder="please enter your username">
+                        <label for="password"></label>
+                        <input type="text" id="password" name="password" placeholder="please enter your password">
+                        <input type="submit" value="Submit">
+                    </form> 
                 </div>
-            </div>
-        </div>
+                
+            </main>
+ 
+
+            <!-- <div class="list">
+                    <div class="users">
+
+                        <input type="text" class="form-control" placeholder="please enter your username"
+                            v-model="name">
+                    </div>
+                    <div class="password">
+                        <input type="text" class="form-control" placeholder="please enter your password"
+                            v-model="name" />
+                    </div>
+
+                    <div class="login">
+                        <button class="btn btn-outline-secondary" type="button"
+                                @click="searchName">
+                            login
+                        </button>
+                    </div>
+            </div> -->
     </div>
            
             
@@ -43,27 +58,10 @@ export default {
   }
 }
 </script>
+
 <style>
-    .img {
-        position: absolute;
-        left:525px;
-        top: 150px;
-    }
-    .home{
-        color:black;
-        background: linear-gradient(to left,#9c88ff,#3cabeb);
-        position:fixed;
-        height:100%;
-        width:100%;
-    }
-    .list {
-        position: absolute;
-        left: 550px;
-        top: 270px;
-    }
-    .login {
-        position: absolute;
-        left:35px;
-    }
+
+@import "../../assets/css/screen.css";
 
 </style>
+
