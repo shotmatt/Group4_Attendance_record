@@ -11,39 +11,15 @@
                 <div class="form">
                     <form action="/action_page.php">
                         <label for="username"></label>
-                        <input type="text" id="username" name="username" placeholder="please enter your username">
+                        <input type="text" id="username" name="username" placeholder="Username"><br>
                         <label for="password"></label>
-                        <input type="text" id="password" name="password" placeholder="please enter your password">
+                        <input type="text" id="password" name="password" placeholder="Password"><br>
                         <input type="submit" value="Submit">
                     </form> 
                 </div>
-                
-            </main>
- 
-
-            <!-- <div class="list">
-                    <div class="users">
-
-                        <input type="text" class="form-control" placeholder="please enter your username"
-                            v-model="name">
-                    </div>
-                    <div class="password">
-                        <input type="text" class="form-control" placeholder="please enter your password"
-                            v-model="name" />
-                    </div>
-
-                    <div class="login">
-                        <button class="btn btn-outline-secondary" type="button"
-                                @click="searchName">
-                            login
-                        </button>
-                    </div>
-            </div> -->
-    </div>
-           
             
-
-    
+            </main>
+    </div>
 </template>
 
 
