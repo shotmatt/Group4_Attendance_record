@@ -14,7 +14,7 @@
                         <input type="text" id="username" name="username" placeholder="Username"><br>
                         <label for="password"></label>
                         <input type="text" id="password" name="password" placeholder="Password"><br>
-                        <input type="submit" value="Submit">
+                        <a href="#">Submit</a>
                     </form> 
                 </div>
             
