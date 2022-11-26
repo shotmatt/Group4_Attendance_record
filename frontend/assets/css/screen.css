@@ -1,0 +1,43 @@
+/*.img {
+    /* position: absolute; *//*
+
+    left:525px;
+    top: 150px;
+
+}
+.body{
+    background-color: red;
+    color:black;
+}
+.list {
+    position: absolute;
+    left: 550px;
+    top: 270px;
+}
+.login {
+    position: absolute;
+    left:35px;
+}*/
+
+
+header{
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+main {
+    margin-top: 10%;
+}
+
+img{
+    width: 25%;
+    margin-bottom: 2rem;
+}
+
+form{
+    display: flex;
+}
