@@ -36,7 +36,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
   if(err) throw err
   //write commands here
-  res.send('connected to server')
 }
 
 
