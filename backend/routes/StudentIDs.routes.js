@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
     res.json({message: "Welcome to the Student database"});
 });
 
-// Retrieve a single pet with name
+// Retrieve a single Student with name
 router.get("../models/StudentIDs/:name", StudentIDsController.findOne);
  
-// Update a pet with id
+// Update a Student with id
 router.put("../models/StudentIDs/:name", StudentIDsController.update);
  
 module.exports = router;
