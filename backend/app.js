@@ -15,6 +15,9 @@ var OtherIDsRouter = require('./routes/OtherIDs.routes');
 var LessonsRouter = require('./routes/Lessons.routes');
 var AttendenceRouter = require('./routes/Attendence.routes'); 
 
+var AuthRouter = require("./routes/auth.routes");
+var SecurityRouter = require("./routes/security.routes");
+
 var app = express();
 
 app.use(logger('dev'));
@@ -33,10 +36,23 @@ app.use('/Attendence', AttendenceRouter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
-  if(err) throw err
-  //write commands here
-}
+const db = require("./models");
+db.mongoose.connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+        console.log("connected");
+}).catch(err => {
+        console.log("cannot connect: ", err);
+        process.exit();
+})
+
+
+//MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
+//  if(err) throw err
+//  //write commands here
+//}
+
 /*var result
 let router = express.Router();
 router.get(StudentIDsRouter,('Matt',result));*/

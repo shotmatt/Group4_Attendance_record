@@ -1,3 +1,5 @@
+//idk what this is for but i dont wanna move it in case shit breaks
+
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 

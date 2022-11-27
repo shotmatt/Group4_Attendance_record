@@ -13,4 +13,6 @@ module.exports = mongoose => {
             }
         })
     )
+
+    return User;
 }
