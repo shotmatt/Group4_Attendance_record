@@ -2,7 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\models"
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\components"
   ],
+  "SelectedNode": "\\frontend\\src\\components\\LoginPage.vue",
   "PreviewInSolutionExplorer": false
 }

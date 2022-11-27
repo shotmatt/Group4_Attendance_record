@@ -36,11 +36,22 @@ app.use('/Attendence', AttendenceRouter);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+const db = require("./models");
+db.mongoose.connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+        console.log("connected");
+}).catch(err => {
+        console.log("cannot connect: ", err);
+        process.exit();
+})
 
-MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
-  if(err) throw err
-  //write commands here
-}
+
+//MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
+//  if(err) throw err
+//  //write commands here
+//}
 
 
 app.get('/', (req, res, next) => {
