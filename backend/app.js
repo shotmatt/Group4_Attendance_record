@@ -16,6 +16,9 @@ var OtherIDsRouter = require('./routes/OtherIDs.routes');
 var LessonsRouter = require('./routes/Lessons.routes');
 var AttendenceRouter = require('./routes/Attendence.routes'); 
 
+var AuthRouter = require("./routes/auth.routes");
+var SecurityRouter = require("./routes/security.routes");
+
 var app = express();
 
 app.use(logger('dev'));
