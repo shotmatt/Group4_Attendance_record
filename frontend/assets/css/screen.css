@@ -1,0 +1,35 @@
+header{
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+h1{
+    font-size: 5rem;
+}
+
+main {
+    margin-top: 5%;
+}
+
+img{
+    width: 25%;
+    margin-bottom: 2rem;
+}
+
+form{
+    justify-content: center;
+}
+
+input {
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 25%;
+}
+
+a{
+    background-color: lightblue;
+    padding: 0.5rem;
+    border-radius: 15px;
+}
