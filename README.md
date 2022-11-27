@@ -7,8 +7,8 @@ Data Path: \Group4_Attendance_record-main\Database Server\data
 
 run the MongoDBserver: 
 *cd to \Group4_Attendance_record-main\Database Server\mongodbServer\bin\
-*run Command: mongod.exe --dbpath=C:\AA\Workspace\data --nojournal --bind_ip 127.0.0.1
-   *LocalHost:localhost:27017
+*run Command: mongod.exe --dbpath=(set to your data dir) --nojournal --bind_ip 127.0.0.1
+   *Host: mongodb://127.0.0.1:27017
 
 Backend Path:\Group4_Attendance_record-main\backend
 
