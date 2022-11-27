@@ -1,7 +1,10 @@
+<!-- this page is the parent of all views -->
+
 <template>
   <div>
-    <h1>Attendance</h1>
+    <h1>Attendance Register</h1>
     <p class="lead">{{fetch_status}}</p>
+
   </div>
 </template>
 
@@ -30,3 +33,7 @@ export default {
   }
 }
 </script>
+
+<style>
+@import "../../assets/css/main.css";
+</style>
