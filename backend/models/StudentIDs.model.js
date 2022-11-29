@@ -8,7 +8,7 @@ module.exports = mongoose => {
         Coarse: String,
         password: String,
       }
-    )
+    ), "StudentIDs"
   );
   
   return StudentID;
