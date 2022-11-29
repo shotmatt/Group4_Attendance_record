@@ -1,4 +1,4 @@
-<!-- <template>
+<template>
     <div class="student">
         <Attendance msg="Welcome to Your Vue.js App" />
 
@@ -23,31 +23,28 @@
                         v-for="(student, index) in student"
                         :key="index"
                         @click="setActivestudent(student, index)">
-                        {{ student.name }}
+                        {{ student.Name }}
                     </li>
                 </ul>
 
                 <button class="m-3 btn btn-sm btn-danger" @click="removeAllstudent">
-                    Remove All
+                    Remove
                 </button>
             </div>
             <div class="col-md-6">
                 <div v-if="currentstudent">
                     <h4>student</h4>
                     <div>
-                        <label><strong>Name:</strong></label> {{ currentstudent.name }}
+                        <label><strong>Name:</strong></label> {{ currentstudent.Name }}
                     </div>
                     <div>
-                        <label><strong>Species:</strong></label> {{ currentstudent.species }}
+                        <label><strong>Password:</strong></label> {{ currentstudent.Password }}
                     </div>
                     <div>
-                        <label><strong>Breed:</strong></label> {{ currentstudent.breed }}
+                        <label><strong>Privlege:</strong></label> {{ currentstudent.Privlege }}
                     </div>
                     <div>
-                        <label><strong>Age:</strong></label> {{ currentstudent.age }}
-                    </div>
-                    <div>
-                        <label><strong>Colour:</strong></label> {{ currentstudent.colour }}
+                        <label><strong>Coarse:</strong></label> {{ currentstudent.Coarse }}
                     </div>
 
                     <router-link :to="'/students/' + currentstudent._id" class="badge badge-warning">Edit</router-link>
@@ -62,7 +59,7 @@
 </template>
 <script>
 
-
+import axios from 'axios'
 export default {
         name: "student-list",
         data() {
@@ -75,14 +72,15 @@ export default {
         },
         methods: {
             retrievestudent() {
-                studentDataService.getAll()
-                    .then(response => {
-                        this.student = response.data;
-                        console.log(response.data);
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    });
+                const that = this
+                axios.get('http://localhost:9000/StudentIDs/getAll', {
+                    
+                }).then(function (response) {
+                    that.student = response.data;
+                    console.log(response.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
             },
 
             refreshList() {
@@ -97,26 +95,41 @@ export default {
             },
 
             removeAllstudent() {
-                studentDataService.deleteAll()
-                    .then(response => {
-                        console.log(response.data);
-                        this.refreshList();
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    });
+                const that = this
+                axios.get('http://localhost:9000/StudentIDs/removeAll', {
+                    params: {
+                        name:that.currentstudent.Name
+                    }
+                }).then(function (response) {
+                    console.log(response.data);
+                    that.refreshList();
+                }).catch(function (error) {
+                    console.log(error);
+                });
             },
-
             searchName() {
-                studentDataService.findByName(this.name)
-                    .then(response => {
-                        this.student = response.data;
-                        this.setActivestudent(null);
-                        console.log(response.data);
-                    })
-                    .catch(e => {
-                        console.log(e);
-                    });
+                const that = this
+                axios.get('http://localhost:9000/StudentIDs/getAll', {
+                    params: {
+                        name:this.name
+                    }
+                }).then(function (response) {
+                    that.student = response.data;
+                    that.setActivestudent(null);
+                    console.log(response.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+
+                // studentDataService.findByName(this.name)
+                //     .then(response => {
+                //         this.student = response.data;
+                //         this.setActivestudent(null);
+                //         console.log(response.data);
+                //     })
+                //     .catch(e => {
+                //         console.log(e);
+                //     });
             }
         },
         mounted() {
@@ -139,4 +152,4 @@ export default {
         max-width: 750px;
         margin: auto;
     }
-</style> -->
+</style>
