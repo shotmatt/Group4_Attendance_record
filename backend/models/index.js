@@ -8,5 +8,7 @@ const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
 db.StudentIDs = require("./StudentIDs.model.js")(mongoose);
-
+// db.Attendence = require("./Attendence.model.js")(mongoose);
+// db.Lessons = require("./Lessons.model.js")(mongoose);
+// db.User = require("./user.model.js")(mongoose);
 module.exports = db;
