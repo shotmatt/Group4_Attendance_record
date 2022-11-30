@@ -30,6 +30,7 @@ app.use(cors());
 
 app.use('/StudentIDs', StudentIDsRouter);
 app.use('/OtherIDs', OtherIDsRouter);
+app.use('/Auth', AuthRouter);
 app.use('/Lessons', LessonsRouter);
 app.use('/Attendence', AttendenceRouter);
 
@@ -46,7 +47,6 @@ db.mongoose.connect(db.url, {
         console.log("cannot connect: ", err);
         process.exit();
 })
-
 
 //MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
 //  if(err) throw err
