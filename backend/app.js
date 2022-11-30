@@ -13,7 +13,7 @@ var cors = require('cors');
 var StudentIDsRouter = require('./routes/StudentIDs.routes');
 var OtherIDsRouter = require('./routes/OtherIDs.routes');
 var LessonsRouter = require('./routes/Lessons.routes');
-var AttendenceRouter = require('./routes/Attendence.routes'); 
+var AttendanceRouter = require('./routes/Attendance.routes'); 
 
 var AuthRouter = require("./routes/auth.routes");
 var SecurityRouter = require("./routes/security.routes");
@@ -32,7 +32,7 @@ app.use('/StudentIDs', StudentIDsRouter);
 app.use('/OtherIDs', OtherIDsRouter);
 app.use('/Auth', AuthRouter);
 app.use('/Lessons', LessonsRouter);
-app.use('/Attendence', AttendenceRouter);
+app.use('/Attendence', AttendanceRouter);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,23 +42,14 @@ db.mongoose.connect(db.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
-        console.log("connected");
+        console.log("The database is successfully connected! :)");
 }).catch(err => {
-        console.log("cannot connect: ", err);
+        console.log("Cannot connect to the databases!:", err);
         process.exit();
 })
 
-//MongoClient.connect("mongodb://127.0.0.1:27017/Attendence-database"), function (err, db) {
-//  if(err) throw err
-//  //write commands here
-//}
-
-/*var result
-let router = express.Router();
-router.get(StudentIDsRouter,('Matt',result));*/
-
 app.get('/', (req, res, next) => {
-  res.send('hello world')
+  res.send('The server is up and running :)')
 })
 
 module.exports = app;
