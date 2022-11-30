@@ -1,6 +1,6 @@
 module.exports = mongoose => {
-  var OtherID = mongoose.model(
-    "OtherID",
+  var OtherIDs = mongoose.model(
+    "OtherIDs",
     mongoose.Schema(
       {
         Privlege: String,
@@ -8,8 +8,8 @@ module.exports = mongoose => {
         Coarse: String,
         password: String,
       }
-    )
+    ), "OtherIDs"
   );
   
-  return OtherID;
+  return OtherIDs;
 };

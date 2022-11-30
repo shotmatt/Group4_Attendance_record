@@ -2,16 +2,19 @@ var express = require('express');
 var router = express.Router();
 
 //Require controller
-var OtherIDscontroller = require('../controllers/OtherIDs.controller');
+var OtherIDsController = require('../controllers/OtherIDs.controller');
 
 router.get('/', function(req, res, next) {
-    res.json({message: "Welcome to the Teacher and admin database"});
+    res.json({message: "Welcome to the Lecturers and Admins database"});
 });
 
-// Retrieve a single pet with name
-router.get("../models/OtherIDs/:name", OtherIDscontroller.findOne);
- 
-// Update a pet with id
-router.put("../models/OtherIDs/:name", OtherIDscontroller.update);
+router.get('/getAll', OtherIDsController.getAll);
+router.get('/findOne', OtherIDsController.findOne);
+router.get('/removeAll', OtherIDsController.removeAll);
+
+// Retrieve a single Student with name
+router.get("../models/OtherIDs/:name", OtherIDsController.findOne);
+// Update a Student with id
+router.put("../models/OtherIDs/:name", OtherIDsController.update);
  
 module.exports = router;

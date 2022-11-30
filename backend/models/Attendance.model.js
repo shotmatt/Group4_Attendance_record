@@ -1,14 +1,14 @@
 module.exports = mongoose => {
-  var Attendence = mongoose.model(
-    "Attendence",
+  var Attendance = mongoose.model(
+    "Attendance",
     mongoose.Schema(
       {
         LessonID: Number,
         StudentID: Number,
         Attendence: Number
       }
-    )
+    ), "Attendance"
   );
   
-  return Attendence;
+  return Attendance;
 };

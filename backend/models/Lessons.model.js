@@ -7,7 +7,7 @@ module.exports = mongoose => {
         Lesson: String,
         NoOfWeek: Number,
       }
-    )
+    ), "Lessons"
   );
   
   return Lesson;

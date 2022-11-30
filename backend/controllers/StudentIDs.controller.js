@@ -4,6 +4,7 @@ const config = require("../config/auth.config.js");
 var querystring = require("querystring");
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+
 //Welcome page
 exports.start = (response) => {
     response.writeHead(200, {"Content-type": "text/plain"});
@@ -26,6 +27,7 @@ exports.findOne = (req, res) => {
         })
 
 };
+
 exports.removeAll = (req, res) => {
     const Name = req.query.name;
     StudentIDs.deleteOne({Name:Name})
@@ -40,6 +42,7 @@ exports.removeAll = (req, res) => {
         })
 
 };
+
 exports.getAll = (req, res) => {
     const Name = req.query.name;
     const params = {}
@@ -58,6 +61,7 @@ exports.getAll = (req, res) => {
         })
 
 };
+
 exports.findByName = (req, res) => {
     // StudentIDs.findOne({
 
@@ -65,7 +69,6 @@ exports.findByName = (req, res) => {
     //     res.status(200).send({message: data});
     //         return;
     // })
-
 
     StudentIDs.findOne({
         Name: req.body.username
@@ -97,6 +100,7 @@ exports.findByName = (req, res) => {
 
 };
 
+// Update a student by the id in the request
 exports.update = (req, res) => {
     if (!req.body) {
         return res.status(400).send({
