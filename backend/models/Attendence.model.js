@@ -7,7 +7,7 @@ module.exports = mongoose => {
         StudentID: Number,
         Attendence: Number
       }
-    )
+    ), "Attendence"
   );
   
   return Attendence;
