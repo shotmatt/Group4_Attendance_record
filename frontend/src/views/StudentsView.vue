@@ -15,22 +15,40 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <h4>student List</h4>
-                <ul class="list-group">
-                    <li class="list-group-item"
-                        :class="{ active: index == currentIndex }"
-                        v-for="(student, index) in student"
-                        :key="index"
-                        @click="setActivestudent(student, index)">
-                        {{ student.Name }}
-                    </li>
-                </ul>
+            
+            <div style="display:flex">
+                <div class="col-md-6">
+                    <h4>student List</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item"
+                            :class="{ active: index == currentIndex }"
+                            v-for="(student, index) in student"
+                            :key="index"
+                            @click="setActivestudent(student, index)">
+                            {{ student.Name }}
+                        </li>
+                    </ul>
 
-                <button class="m-3 btn btn-sm btn-danger" @click="removeAllstudent">
-                    Remove
-                </button>
+                    <button class="m-3 btn btn-sm btn-danger" @click="removeAllstudent">
+                        Remove
+                    </button>
+                    <button class="m-3 btn btn-sm btn-primary" @click="addStudent">
+                        Add
+                    </button>
+                </div>
+                <div class="col-md-6" style="margin-left:20px">
+                    <h4>Attendance student List</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item"
+                            v-for="(student, index) in attendanceStudent"
+                            :key="index"
+                            >
+                            {{ student.Name }}
+                        </li>
+                    </ul>
+                </div>
             </div>
+            
             <div class="col-md-6">
                 <div v-if="currentstudent">
                     <h4>student</h4>
@@ -46,8 +64,12 @@
                     <div>
                         <label><strong>Coarse:</strong></label> {{ currentstudent.Coarse }}
                     </div>
-
-                    <router-link :to="'/students/' + currentstudent._id" class="badge badge-warning">Edit</router-link>
+                     <div>
+                        <label><strong>Attendance:</strong></label> {{ currentstudent.Attendance }}
+                    </div>
+                    <button class="m-3 btn btn-sm btn-info" @click="editStudent(currentstudent._id)">
+                    Edit
+                </button>
                 </div>
                 <div v-else>
                     <br />
@@ -55,6 +77,8 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 </template>
 <script>
@@ -65,6 +89,7 @@ export default {
         data() {
             return {
                 student: [],
+                attendanceStudent:[],
                 currentstudent: null,
                 currentIndex: -1,
                 name: ""
@@ -82,9 +107,20 @@ export default {
                     console.log(error);
                 });
             },
+            retrievestudent1() {
+                const that = this
+                axios.get('http://localhost:9000/StudentIDs/getAll?Attendance=Attendance', {
+                }).then(function (response) {
+                    that.attendanceStudent = response.data;
+                    console.log(response.data);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            },
 
             refreshList() {
                 this.retrievestudent();
+                this.retrievestudent1();
                 this.currentstudent = null;
                 this.currentIndex = -1;
             },
@@ -106,6 +142,23 @@ export default {
                 }).catch(function (error) {
                     console.log(error);
                 });
+            },
+            addStudent(){
+                this.$router.push({
+                    path:  'studentInfo',
+                    query: {
+                        type: 'add'
+                    }
+                })
+            },
+            editStudent(id){
+                this.$router.push({
+                    path:  'studentInfo',
+                    query: {
+                         type: 'edit',
+                        id: id
+                    }
+                })
             },
             searchName() {
                 const that = this
@@ -134,6 +187,7 @@ export default {
         },
         mounted() {
             this.retrievestudent();
+            this.retrievestudent1();
         }
 };
 </script>
