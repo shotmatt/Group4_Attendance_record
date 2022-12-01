@@ -19,3 +19,53 @@ h1 {
 a {
   font-weight: bold;
 }
+
+.list {
+  text-align: left;
+  max-width: 50rem;
+  margin: auto;
+}
+
+.searchbar {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.student-info-container {
+  text-align: center;
+  padding-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.student-info-body {
+  padding: 1rem;
+  background-color: lightskyblue;
+  border-radius: 2rem;
+}
+
+.buttons {
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button {
+  background-color: lightskyblue;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-right: 2rem;
+}
+
+button:hover {
+  background-color: aqua;
+}
+
+.search-button {
+  background-color: lightskyblue;
+  border-radius: 1rem;
+  padding: 0.3rem 1rem 0.3rem 1rem;;
+  margin-left: 1rem;
+}
