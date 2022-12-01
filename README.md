@@ -1,12 +1,12 @@
 # Attendance Registration Web Application
 By:
-* Steve Redmile
-* Matthew Turner
-* Daniyal Syed
-* Rui Sun
-* Jinsong Zhang
+- Steve Redmile
+- Matthew Turner
+- Daniyal Syed
+- Rui Sun
+- Jinsong Zhang
 
-The following commands need to run in order.
+The following commands need to run in order:
 
 * Run the MongoDBserver: 
  * cd to ...\mongodbServer\bin\
