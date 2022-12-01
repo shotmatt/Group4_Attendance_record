@@ -35,6 +35,9 @@
                     <button class="m-3 btn btn-sm btn-primary" @click="addStudent">
                         Add
                     </button>
+                     <button class="m-3 btn btn-sm btn-primary" @click="exportStudent">
+                        Generate Report
+                    </button>
                 </div>
                 <div class="col-md-6" style="margin-left:20px">
                     <h4>Attendance student List</h4>
@@ -83,7 +86,8 @@
 </template>
 <script>
 
-import axios from 'axios'
+import axios from 'axios';
+import * as XLSX from "xlsx";
 export default {
         name: "student-list",
         data() {
@@ -159,6 +163,26 @@ export default {
                         id: id
                     }
                 })
+            },
+            exportStudent(){
+                const fdArrayList = this.student;
+                const fdArray = [];
+                fdArrayList.forEach(function (data, index) {
+                    var obj = {
+                    Name: data.Name,
+                    Password: data.Password,
+                    Privlege: data.Privlege,
+                    Coarse: data.Coarse,
+                    Attendance: data.Attendance,
+                    };
+                    fdArray.push(obj);
+                });
+                // create a new .xlsx
+                var wb = XLSX.utils.book_new();
+                // encapsulation JSON data
+                var fdXslxws = XLSX.utils.json_to_sheet(fdArray);
+                XLSX.utils.book_append_sheet(wb, fdXslxws, "sheet");
+                XLSX.writeFile(wb, "student List" + ".xlsx");
             },
             searchName() {
                 const that = this
