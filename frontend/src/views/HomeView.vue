@@ -14,7 +14,7 @@
           <input type="text" id="username" name="username" v-model="username" placeholder="Username"><br>
           <label for="password"></label>
           <input type="password" id="password" name="password" v-model="password" placeholder="Password"><br>
-          <a href="#" @click="Submit">Submit</a>
+          <a href="#" @click="Submit">Log In</a>
         </form>
       </div>
 
