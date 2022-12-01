@@ -14,9 +14,13 @@ exports.signup = (req, res) => {
 
     user.save().then(data => {
         console.log("signup user saved in database");
-        res.send({message: "user was registered successfully"});
+        res.send({
+            message: "user was registered successfully"
+        });
     }).catch(err => {
-        res.status(500).send({message: err || "some error happened"});
+        res.status(500).send({
+            message: err || "some error happened"
+        });
     });
 };
 
@@ -25,22 +29,30 @@ exports.signin = (req, res) => {
         Name: req.body.username
     }).exec((err, user) => {
         if (err) {
-            res.status(500).send({message: err});
+            res.status(500).send({
+                message: err
+            });
             return;
         }
         if (!user) {
-            return res.status(404).send({message: "User not found"+req.body.Name});
-        }
-
-        var passwordIsValid = req.body.password == user.Password ?true:false;
-        if (!passwordIsValid) {
-            return res.status(401).send({
-                accessToken: null,
-                message: "invalid password:"+req.body
+            return res.status(404).send({
+                message: "User not found" + req.body.Name
             });
         }
 
-        var token = jwt.sign({id: user._id }, config.secret, {expiresIn: 86400});
+        var passwordIsValid = req.body.password == user.Password ? true : false;
+        if (!passwordIsValid) {
+            return res.status(401).send({
+                accessToken: null,
+                message: "invalid password:" + req.body
+            });
+        }
+
+        var token = jwt.sign({
+            id: user._id
+        }, config.secret, {
+            expiresIn: 86400
+        });
 
         res.status(200).send({
             id: user._id,

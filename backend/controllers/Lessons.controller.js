@@ -5,7 +5,9 @@ var querystring = require("querystring");
 
 //Welcome page
 exports.start = (response) => {
-    response.writeHead(200, {"Content-type": "text/plain"});
+    response.writeHead(200, {
+        "Content-type": "text/plain"
+    });
     response.write("Welcome to the Lessons system");
     response.end();
 };
@@ -17,47 +19,61 @@ exports.findOne = (req, res) => {
     Lessons.findByLesson(Lesson)
         .then(data => {
             if (!data)
-                res.status(404).send({ message: "Not found Lesson with name: " + Lesson});
-            else 
+                res.status(404).send({
+                    message: "Not found Lesson with name: " + Lesson
+                });
+            else
                 res.send(data);
         })
         .catch(err => {
-            res.status(500).send({message: "Error retriving Lesson with name: " + Lesson});
+            res.status(500).send({
+                message: "Error retriving Lesson with name: " + Lesson
+            });
         })
 };
 
 exports.getAll = (req, res) => {
     const Lesson = req.query.lesson;
     const params = {}
-    if(Lesson){
+    if (Lesson) {
         params.Lesson = Lesson
     }
     Lessons.find(params)
         .then(data => {
             if (!data)
-                res.status(404).send({ message: "Not found Lesson with name: " + Lesson});
+                res.status(404).send({
+                    message: "Not found Lesson with name: " + Lesson
+                });
             else
                 res.send(data);
         })
         .catch(err => {
-            res.status(500).send({message: "Error retriving Lesson with name: " + Lesson});
+            res.status(500).send({
+                message: "Error retriving Lesson with name: " + Lesson
+            });
         })
 };
 
 exports.removeAll = (req, res) => {
     const Lesson = req.query.lesson;
-    Lessons.deleteOne({Lesson:Lesson})
+    Lessons.deleteOne({
+            Lesson: Lesson
+        })
         .then(data => {
             if (!data)
-                res.status(404).send({ message: "Not found Lesson with name: " + Name});
+                res.status(404).send({
+                    message: "Not found Lesson with name: " + Name
+                });
             else
                 res.send(data);
         })
         .catch(err => {
-            res.status(500).send({message: "Error retriving Lesson with name: " + Name});
+            res.status(500).send({
+                message: "Error retriving Lesson with name: " + Name
+            });
         })
 };
- 
+
 // Update a lesson by the id in the request
 exports.update = (req, res) => {
     if (!req.body) {
@@ -68,14 +84,18 @@ exports.update = (req, res) => {
 
     const lesson = req.params.lesson;
 
-    Lessons.findByNameAndUpdate(lesson, req.body, { useFindAndModify: false })
+    Lessons.findByNameAndUpdate(lesson, req.body, {
+            useFindAndModify: false
+        })
         .then(data => {
             if (!data) {
                 res.status(404).send({
                     message: `Cannot update Lesson with name=${lesson}. Maybe Lesson was not found!`
                 });
             } else
-                res.send({ message: "Lesson was updated successfully." });
+                res.send({
+                    message: "Lesson was updated successfully."
+                });
         })
         .catch(err => {
             res.status(500).send({
