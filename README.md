@@ -1,27 +1,18 @@
+The following commands need to run in order.
 
-MongoDB path: \Group4_Attendance_record-main\Database Server\mongodb
+Run the MongoDBserver: 
+ * cd to ...\mongodbServer\bin\
+ * run Command: mongod.exe --dbpath=(set to your data dir) --nojournal --bind_ip 127.0.0.1
+   * Host: mongodb://127.0.0.1:27017
 
-MongoSh path: \Group4_Attendance_record-main\Database Server\mongosh
-
-Data Path: \Group4_Attendance_record-main\Database Server\data
-
-run the MongoDBserver: 
-*cd to \Group4_Attendance_record-main\Database Server\mongodbServer\bin\
-*run Command: mongod.exe --dbpath=(set to your data dir) --nojournal --bind_ip 127.0.0.1
-   *Host: mongodb://127.0.0.1:27017
-
-Backend Path:\Group4_Attendance_record-main\backend
-
-run the BackendServer:
+Run the BackendServer:
 * cd to backend directory
 * npm install
 * (if there are vunrabilites with the install follow instructions to rectify)
 * npm start
   * localhost:9000
 
-Frontend Path: \Group4_Attendance_record-main\frontend
-
-run the FrontEnd:
+Run the Frontend:
 * cd to frontend directory
 * npm install -g @vue/cli
 * (if there are vunrabilites with the install follow instructions to rectify)
@@ -29,9 +20,6 @@ run the FrontEnd:
   * localhost:8080
 
 Connect to the Website:
-*type localhost:8080 in browser
+* type localhost:8080 in browser
 
-*Enjoy!
-
-You need to run these in order^
-
+* Enjoy!
