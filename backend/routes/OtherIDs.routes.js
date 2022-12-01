@@ -12,9 +12,9 @@ router.get('/getAll', OtherIDsController.getAll);
 router.get('/findOne', OtherIDsController.findOne);
 router.get('/removeAll', OtherIDsController.removeAll);
 
-// Retrieve a single Student with name
+// Retrieve a single lecturer or admin with name
 router.get("../models/OtherIDs/:name", OtherIDsController.findOne);
-// Update a Student with id
+// Update a lecturer or admin with id
 router.put("../models/OtherIDs/:name", OtherIDsController.update);
  
 module.exports = router;
