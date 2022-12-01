@@ -68,7 +68,7 @@ exports.update = (req, res) => {
 
     const lesson = req.params.lesson;
 
-    StudentIDs.findByNameAndUpdate(lesson, req.body, { useFindAndModify: false })
+    Lessons.findByNameAndUpdate(lesson, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
                 res.status(404).send({
