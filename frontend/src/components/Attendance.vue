@@ -3,7 +3,7 @@
 <template>
   <div>
     <h1>Attendance Register</h1>
-    <p class="lead">{{fetch_status}} (will remove later) </p>
+    <p class="lead">{{ fetch_status }} (will remove later) </p>
 
   </div>
 </template>
