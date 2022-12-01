@@ -7,6 +7,7 @@ module.exports = mongoose => {
         Name: String,
         Coarse: String,
         Password: String,
+        Attendance: String,
       }
     ), "StudentIDs"
   );
