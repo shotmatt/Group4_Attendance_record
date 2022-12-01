@@ -9,8 +9,8 @@ By:
 The following commands need to run in order:
 
 * Run the MongoDBserver: 
- * cd to ...\mongodbServer\bin\
- * run Command: mongod.exe --dbpath=(set to your data dir) --nojournal --bind_ip 127.0.0.1
+  * cd to ...\mongodbServer\bin\
+  * run Command: mongod.exe --dbpath=(set to your data dir) --nojournal --bind_ip 127.0.0.1
    * Host: mongodb://127.0.0.1:27017
 
 * Run the BackendServer:
