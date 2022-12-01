@@ -12,6 +12,42 @@ exports.start = (response) => {
     response.end();
 };
 
+exports.getAll = (req, res) => {
+    const Name = req.query.name;
+    const Attendance = req.query.Attendance;
+    const params = {}
+    if(Name){
+        params.Name = Name
+    }
+    if(Attendance){
+        params.Attendance = Attendance
+    }
+    StudentIDs.find(params)
+        .then(data => {
+            if (!data)
+                res.status(404).send({ message: "Not found Student with name: " + Name});
+            else
+                res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({message: "Error retriving Student with name: " + Name});
+        })
+};
+
+exports.getInfo = (req, res) => {
+    const id = req.query.id;
+    StudentIDs.findOne({_id:id})
+        .then(data => {
+            if (!data)
+                res.status(404).send({ message: "Not found Student with name: " + id});
+            else
+                res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({message: "Error retriving Student with name: " + id});
+        })
+};
+
 // Find a single student with an id
 exports.findOne = (req, res) => {
     const Name = req.query.name;
@@ -25,7 +61,6 @@ exports.findOne = (req, res) => {
         .catch(err => {
             res.status(500).send({message: "Error retriving Student with name: " + Name});
         })
-
 };
 
 exports.removeAll = (req, res) => {
@@ -40,36 +75,9 @@ exports.removeAll = (req, res) => {
         .catch(err => {
             res.status(500).send({message: "Error retriving Student with name: " + Name});
         })
-
-};
-
-exports.getAll = (req, res) => {
-    const Name = req.query.name;
-    const params = {}
-    if(Name){
-        params.Name = Name
-    }
-    StudentIDs.find(params)
-        .then(data => {
-            if (!data)
-                res.status(404).send({ message: "Not found Student with name: " + Name});
-            else
-                res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({message: "Error retriving Student with name: " + Name});
-        })
-
 };
 
 exports.findByName = (req, res) => {
-    // StudentIDs.findOne({
-
-    // },(err, data)=>{
-    //     res.status(200).send({message: data});
-    //         return;
-    // })
-
     StudentIDs.findOne({
         Name: req.body.username
     },function(err, user){
@@ -97,7 +105,23 @@ exports.findByName = (req, res) => {
             accessToken: token
         });
     })
+};
 
+exports.save = (req, res) => {
+    const student = new StudentIDs({
+        Privlege: req.body.Privlege,
+        Name: req.body.Name,
+        Coarse: req.body.Coarse,
+        Password: req.body.Password,
+        Attendance: req.body.Attendance
+    })
+
+    student.save().then(data => {
+        console.log("student saved in database");
+        res.send({message: "student add successfully"});
+    }).catch(err => {
+        res.status(500).send({message: err || "some error happened"});
+    });
 };
 
 // Update a student by the id in the request
@@ -110,7 +134,8 @@ exports.update = (req, res) => {
 
     const name = req.params.name;
 
-    StudentIDs.findByNameAndUpdate(name, req.body, { useFindAndModify: false })
+    StudentIDs.update({'_id':req.body._id},{$set:{'Attendance':req.body.Attendance,
+    'Coarse':req.body.Coarse,'Name':req.body.Name,'Password':req.body.Password,'Privlege':req.body.Privlege}},{'upsert':false})
         .then(data => {
             if (!data) {
                 res.status(404).send({
@@ -125,3 +150,5 @@ exports.update = (req, res) => {
             });
         });
 };
+
+
