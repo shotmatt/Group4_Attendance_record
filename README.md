@@ -1,9 +1,19 @@
+# Attendance Registration Web Application
+By:
+* Steve Redmile
+* Matthew Turner
+* Daniyal Syed
+* Rui Sun
+* Jinsong Zhang
+
 The following commands need to run in order.
+
 
 Run the MongoDBserver: 
  * cd to ...\mongodbServer\bin\
  * run Command: mongod.exe --dbpath=(set to your data dir) --nojournal --bind_ip 127.0.0.1
    * Host: mongodb://127.0.0.1:27017
+
 
 Run the BackendServer:
 * cd to backend directory
@@ -12,6 +22,7 @@ Run the BackendServer:
 * npm start
   * localhost:9000
 
+
 Run the Frontend:
 * cd to frontend directory
 * npm install -g @vue/cli
@@ -19,7 +30,8 @@ Run the Frontend:
 * npm run serve
   * localhost:8080
 
+
 Connect to the Website:
 * type localhost:8080 in browser
 
-* Enjoy!
+Enjoy!
